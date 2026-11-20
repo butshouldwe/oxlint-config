@@ -1,0 +1,6 @@
+# Internal reasoning receipts are not public source.
+receipts
+# Canonical forge automation is private.
+.forgejo
+# Private reviewer configuration is not part of the public package.
+.lyra

@@ -1,0 +1,59 @@
+{
+  "name": "@butshouldwe/oxlint-config",
+  "version": "0.2.1",
+  "description": "Shared strict oxlint config: Effect presets, Ultracite anti-slop and landmines sleep guards",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/butshouldwe/oxlint-config.git"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "prepare": "effect-tsgo patch --oxlint",
+    "publish:check": "node scripts/publish-check.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "typecheck": "tsc --noEmit --strict --skipLibCheck --module nodenext --target esnext tests/consumer.ts",
+    "lint": "node --check index.js && node --check tests/inheritance.test.mjs && node --check tests/module-mocking.test.mjs && node --check tests/landmines.test.mjs && node --check tests/pack.test.mjs && node --check scripts/publish-check.mjs"
+  },
+  "dependencies": {
+    "@interfere/landmines": "0.1.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@effect/tsgo": "0.70.0",
+    "oxfmt": "0.63.0",
+    "oxlint": "1.94.0",
+    "oxlint-tsgolint": "7.0.2007",
+    "publint": "0.3.22",
+    "typescript": "7.0.2",
+    "ultracite": "8.0.1"
+  },
+  "peerDependencies": {
+    "@effect/tsgo": "0.70.0",
+    "oxlint": "1.94.0",
+    "oxlint-tsgolint": "7.0.2007",
+    "ultracite": "8.0.1"
+  },
+  "engines": {
+    "node": ">=26"
+  },
+  "packageManager": "pnpm@12.6.0"
+}
